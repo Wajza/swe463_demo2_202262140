@@ -9,24 +9,16 @@
 // - optional positional parameters: greetWelcome('Wajd', 'Good morning')
 // - named parameters: greetAgain(name: 'Wajd', greeting: 'Hello')
 
-//  3. Functions — 12 points
-void performOperation(
-  int a,
-  int b,
-  int Function(int, int) operation,
-) {
-  print(operation(a, b));
-}
+// 4. Run the program and explain why the duplicate set item is not stored twice.
+// Sets in Dart automatically remove duplicate items, so even if 'flutter' is added twice to the set, it will only be stored once.
 
-int add(int a, int b) => a + b;
-int subtract(int a, int b) => a - b;
-
-int multiply(int a, int b) {
-  return a * b;
-}
-
+//  4. Collections — 12 points
 void main() {
-  performOperation(10, 5, add);
-  performOperation(10, 5, subtract);
-  performOperation(10, 5, multiply);
+  var fruitsList = ['apples', 'oranges', 'bananas' , 'grapes'];
+  var grades = {'quiz1': 85, 'quiz2': 92, 'quiz3': 78};
+  var tags = {'dart', 'dart', 'flutter', 'mobile', 'flutter'};
+
+  print(fruitsList);
+  print(grades);
+  print(tags);
 }
