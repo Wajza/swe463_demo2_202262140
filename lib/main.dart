@@ -18,10 +18,24 @@
 // Explain why `GreetingPerson` can access `_firstName` and `_lastName` even though they start with `_`.
 // `GreetingPerson` is in the same library as `Person`, so it has access to the private members of `Person`.
 
-//  6. Libraries and Privacy — 10 points
-import 'person.dart';
+//  7. Null Safety and Generics — 12 points
+class UserProfile {
+  final String name;
+  String? bio;
+
+  UserProfile(this.name, {this.bio});
+
+  String getDisplayBio() {
+    return bio ?? 'No bio provided.';
+  }
+}
 
 void main() {
-  final person = GreetingPerson('Ali', 'Hussian');
-  person.sayHi();
+  final user1 = UserProfile('Ahmed');
+  final user2 = UserProfile('Layla', bio: 'Flutter Developer');
+  final user3 = UserProfile('Wajd', bio: null);
+
+  print(user1.getDisplayBio());
+  print(user2.getDisplayBio());
+  print(user3.getDisplayBio());
 }
