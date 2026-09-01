@@ -15,14 +15,13 @@
 // 4. Explain what the spread operator `...` does.
 // The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
 
+// Explain why `GreetingPerson` can access `_firstName` and `_lastName` even though they start with `_`.
+// `GreetingPerson` is in the same library as `Person`, so it has access to the private members of `Person`.
+
 //  6. Libraries and Privacy — 10 points
 import 'person.dart';
 
 void main() {
-  final person = Person('Osama', 'Ali');
-  print(person.greet());
-
-  // The following line causes a compile-time error because
-  // _firstName is private to person.dart's library.
-  print(person._firstName);
+  final person = GreetingPerson('Ali', 'Hussian');
+  person.sayHi();
 }
