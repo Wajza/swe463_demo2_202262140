@@ -15,28 +15,14 @@
 // 4. Explain what the spread operator `...` does.
 // The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
 
-//  5. Object-Oriented Programming — 18 points
-class Animal {
-  void makeSound() {
-    print('Some generic sound');
-  }
-}
-
-mixin Swimmer {
-  void swim() {
-    print('I can swim!');
-  }
-}
-
-class Dolphin extends Animal with Swimmer {}
-class Duck extends Animal with Swimmer {}
+//  6. Libraries and Privacy — 10 points
+import 'person.dart';
 
 void main() {
-  final dolphin = Dolphin();
-  dolphin.swim();
-  dolphin.makeSound();
-  
-  final duck = Duck();
-  duck.swim();
-  duck.makeSound();
+  final person = Person('Osama', 'Ali');
+  print(person.greet());
+
+  // The following line causes a compile-time error because
+  // _firstName is private to person.dart's library.
+  print(person._firstName);
 }
