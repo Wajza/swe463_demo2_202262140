@@ -16,55 +16,27 @@
 // The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
 
 //  5. Object-Oriented Programming — 18 points
-abstract class Post {
-  final String author;
-
-  Post(this.author);
-
-  void render();
-}
-
-class TextPost extends Post {
-  final String text;
-
-  TextPost(String author, this.text) : super(author);
-
-  @override
-  void render() {
-    print('Text post by $author: "$text"');
+class Animal {
+  void makeSound() {
+    print('Some generic sound');
   }
 }
 
-class ImagePost extends Post {
-  final String imageUrl;
-
-  ImagePost(String author, this.imageUrl) : super(author);
-
-  @override
-  void render() {
-    print('Image post by $author at $imageUrl');
+mixin Swimmer {
+  void swim() {
+    print('I can swim!');
   }
 }
 
-class VideoPost extends Post {
-  final String videoUrl;
-
-  VideoPost(String author, this.videoUrl) : super(author);
-
-  @override
-  void render() {
-    print('Video post by $author at $videoUrl');
-  }
-}
+class Dolphin extends Animal with Swimmer {}
+class Duck extends Animal with Swimmer {}
 
 void main() {
-  List<Post> feed = [
-    TextPost('khalid', 'Flutter is amazing!'),
-    ImagePost('omar', 'https://example.com/sunset.png'),
-    VideoPost('wajd', 'https://example.com/tutorial.mp4'),
-  ];
-
-  for (final post in feed) {
-    post.render();
-  }
+  final dolphin = Dolphin();
+  dolphin.swim();
+  dolphin.makeSound();
+  
+  final duck = Duck();
+  duck.swim();
+  duck.makeSound();
 }
