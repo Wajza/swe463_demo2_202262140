@@ -18,72 +18,35 @@
 // Explain why `GreetingPerson` can access `_firstName` and `_lastName` even though they start with `_`.
 // `GreetingPerson` is in the same library as `Person`, so it has access to the private members of `Person`.
 
-//  7. Null Safety and Generics — 12 points
-class User {
-  final String username;
-  final String email;
+// Run the program and write the order in which `[1]` through `[6]` are printed.
+// The order of the printed statements will be:
+// [1] Using async/await
+// [2] Fetching data...
+// [3] Result: Fetched Data
+// [4] Using .then()
+// [5] Program continues after .then() call
+// [6] .then() result: Fetched Data
 
-  User(this.username, this.email);
+//  8. Asynchronous Programming — 11 points
+Future<String> fetchData() async {
+  await Future.delayed(const Duration(seconds: 2));
+  return 'Fetched Data';
 }
 
-abstract class Post {
-  final String author;
+Future<void> main() async {
+  print('[1] Using async/await');
+  print('[2] Fetching data...');
 
-  Post(this.author);
+  final data = await fetchData();
+  print('[3] Result: $data');
 
-  void render();
-}
+  print('[4] Using .then()');
 
-class TextPost extends Post {
-  final String text;
+  fetchData().then((value) {
+    print('[6] .then() result: $value');
+  }).catchError((error) {
+    print('[7] Error: $error');
+  });
 
-  TextPost(String author, this.text) : super(author);
-
-  @override
-  void render() {
-    print('Text post by $author: "$text"');
-  }
-}
-
-class ApiResponse<T> {
-  final bool success;
-  final T? data;
-  final String? errorMessage;
-
-  ApiResponse(this.success, {this.data, this.errorMessage});
-}
-
-void main() {
-  final userResponse = ApiResponse<User>(
-    true,
-    data: User('khalid', 'khalid@example.com'),
-  );
-
-  print(userResponse.data?.username);
-
-  final postResponse = ApiResponse<Post>(
-    true,
-    data: TextPost('Turki', 'Flutter is awesome'),
-  );
-
-  if (postResponse.success) {
-    postResponse.data?.render();
-  } else {
-    print('Response failed: ${postResponse.errorMessage}');
-  }
-
-  final errorResponse = ApiResponse<User>(
-    false,
-    errorMessage: 'Unable to load user',
-  );
-
-  print(errorResponse.errorMessage);
-
-  // Student task: ApiResponse<int>
-  final intResponse = ApiResponse<int>(
-    true,
-    data: 200,
-  );
-
-  print(intResponse.data);
+  print('[5] Program continues after .then() call');
 }
