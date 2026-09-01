@@ -12,13 +12,20 @@
 // 4. Run the program and explain why the duplicate set item is not stored twice.
 // Sets in Dart automatically remove duplicate items, so even if 'flutter' is added twice to the set, it will only be stored once.
 
+// 4. Explain what the spread operator `...` does.
+// The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
+
 //  4. Collections — 12 points
 void main() {
-  var fruitsList = ['apples', 'oranges', 'bananas' , 'grapes'];
-  var grades = {'quiz1': 85, 'quiz2': 92, 'quiz3': 78};
-  var tags = {'dart', 'dart', 'flutter', 'mobile', 'flutter'};
+// fruitsList = ['apples', 'oranges', 'bananas'];
+  List<String> fruitsList = [];
+  List<String> moreFruits = ['grape', 'kiwi', 'mango'];
 
-  print(fruitsList);
-  print(grades);
-  print(tags);
+  List<String> allFruits = [
+    'watermelon',
+    if (fruitsList.isNotEmpty) ...fruitsList,
+    for (var fruit in moreFruits) fruit,
+  ];
+
+  print(allFruits);
 }
