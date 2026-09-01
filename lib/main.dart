@@ -10,27 +10,23 @@
 // - named parameters: greetAgain(name: 'Wajd', greeting: 'Hello')
 
 //  3. Functions — 12 points
-void greet(String name, String greeting) {
-  print('$greeting, $name!');
+void performOperation(
+  int a,
+  int b,
+  int Function(int, int) operation,
+) {
+  print(operation(a, b));
 }
 
-void greetWelcome(String name, [String greeting = 'Welcome']) {
-  print('$greeting, $name!');
-}
+int add(int a, int b) => a + b;
+int subtract(int a, int b) => a - b;
 
-void greetAgain({required String name, String? greeting}) {
-  print('${greeting ?? 'Hi'}, $name!');
+int multiply(int a, int b) {
+  return a * b;
 }
 
 void main() {
-  greet('Wajd', 'Hello');
-  greetWelcome('Wajd');
-  greetWelcome('Wajd', 'Good morning');
-  greetAgain(name: 'Wajd', greeting: 'Hello');
-  greetAgain(name: 'Wajd');
-
-
-  greet('Wajd', 'Hey');
-  greetWelcome('Wajd', 'Good evening');
-  greetAgain(name: 'Wajd', greeting: 'Hello again');
+  performOperation(10, 5, add);
+  performOperation(10, 5, subtract);
+  performOperation(10, 5, multiply);
 }
