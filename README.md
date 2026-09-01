@@ -75,10 +75,10 @@ Replace the contents of `lib/main.dart` with:
 
 ```dart
 void main() {
-  int age = 25;
-  double height = 1.80;
-  bool isStudent = false;
-  String name = 'Ahmad';
+  int age = 23;
+  double height = 1.50;
+  bool isStudent = True;
+  String name = 'Wajd';
   List<int> scores = [90, 80, 70];
 
   print('$name is $age years old and $height meters tall.');
