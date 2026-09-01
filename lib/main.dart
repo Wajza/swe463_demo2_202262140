@@ -16,19 +16,55 @@
 // The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
 
 //  5. Object-Oriented Programming — 18 points
-class User {
-  final String username;
-  final String email;
+abstract class Post {
+  final String author;
 
-  User(this.username, this.email);
+  Post(this.author);
+
+  void render();
+}
+
+class TextPost extends Post {
+  final String text;
+
+  TextPost(String author, this.text) : super(author);
+
+  @override
+  void render() {
+    print('Text post by $author: "$text"');
+  }
+}
+
+class ImagePost extends Post {
+  final String imageUrl;
+
+  ImagePost(String author, this.imageUrl) : super(author);
+
+  @override
+  void render() {
+    print('Image post by $author at $imageUrl');
+  }
+}
+
+class VideoPost extends Post {
+  final String videoUrl;
+
+  VideoPost(String author, this.videoUrl) : super(author);
+
+  @override
+  void render() {
+    print('Video post by $author at $videoUrl');
+  }
 }
 
 void main() {
-  var user = User('ali_ux', 'ali@email.com');
-  var user2 = User('wajd', 'wajd@email.com');
+  List<Post> feed = [
+    TextPost('khalid', 'Flutter is amazing!'),
+    ImagePost('omar', 'https://example.com/sunset.png'),
+    VideoPost('wajd', 'https://example.com/tutorial.mp4'),
+  ];
 
-  print(user.username);
-  print(user.email);
-  print(user2.username);
-  print(user2.email);
+  for (final post in feed) {
+    post.render();
+  }
 }
