@@ -15,17 +15,20 @@
 // 4. Explain what the spread operator `...` does.
 // The spread operator `...` is used to expand a collection into individual elements. It allows you to include all elements of one collection into another collection.
 
-//  4. Collections — 12 points
+//  5. Object-Oriented Programming — 18 points
+class User {
+  final String username;
+  final String email;
+
+  User(this.username, this.email);
+}
+
 void main() {
-// fruitsList = ['apples', 'oranges', 'bananas'];
-  List<String> fruitsList = [];
-  List<String> moreFruits = ['grape', 'kiwi', 'mango'];
+  var user = User('ali_ux', 'ali@email.com');
+  var user2 = User('wajd', 'wajd@email.com');
 
-  List<String> allFruits = [
-    'watermelon',
-    if (fruitsList.isNotEmpty) ...fruitsList,
-    for (var fruit in moreFruits) fruit,
-  ];
-
-  print(allFruits);
+  print(user.username);
+  print(user.email);
+  print(user2.username);
+  print(user2.email);
 }
